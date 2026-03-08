@@ -1,0 +1,91 @@
+import {
+  LayoutDashboard,
+  Receipt,
+  Wallet,
+  CreditCard,
+  TrendingUp,
+  PiggyBank,
+  Bot,
+  BarChart3,
+  Settings,
+} from "lucide-react";
+import { NavLink } from "@/components/NavLink";
+import { useLocation } from "react-router-dom";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarHeader,
+  SidebarFooter,
+  useSidebar,
+} from "@/components/ui/sidebar";
+
+const navItems = [
+  { title: "Dashboard", url: "/", icon: LayoutDashboard },
+  { title: "Expenses", url: "/expenses", icon: Receipt },
+  { title: "Income", url: "/income", icon: Wallet },
+  { title: "Debt Manager", url: "/debt", icon: CreditCard },
+  { title: "Investments", url: "/investments", icon: TrendingUp },
+  { title: "Budget Planner", url: "/budget", icon: PiggyBank },
+  { title: "AI Advisor", url: "/ai-advisor", icon: Bot },
+  { title: "Reports", url: "/reports", icon: BarChart3 },
+  { title: "Settings", url: "/settings", icon: Settings },
+];
+
+export function AppSidebar() {
+  const { state } = useSidebar();
+  const collapsed = state === "collapsed";
+  const location = useLocation();
+
+  return (
+    <Sidebar collapsible="icon" className="border-r border-border/50">
+      <SidebarHeader className="p-4">
+        <div className="flex items-center gap-3">
+          <div className="h-8 w-8 rounded-lg gradient-primary flex items-center justify-center shrink-0">
+            <Wallet className="h-4 w-4 text-primary-foreground" />
+          </div>
+          {!collapsed && (
+            <span className="text-lg font-bold tracking-tight gradient-text">
+              FinanceAI
+            </span>
+          )}
+        </div>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {navItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <NavLink
+                      to={item.url}
+                      end={item.url === "/"}
+                      className="flex items-center gap-3 px-3 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200"
+                      activeClassName="bg-primary/10 text-primary font-medium"
+                    >
+                      <item.icon className="h-4 w-4 shrink-0" />
+                      {!collapsed && <span>{item.title}</span>}
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+      <SidebarFooter className="p-4">
+        {!collapsed && (
+          <div className="glass rounded-lg p-3 text-xs text-muted-foreground">
+            <p className="font-medium text-foreground">Pro Plan</p>
+            <p className="mt-1">AI-powered insights active</p>
+          </div>
+        )}
+      </SidebarFooter>
+    </Sidebar>
+  );
+}
