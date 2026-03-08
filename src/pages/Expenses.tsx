@@ -8,12 +8,12 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Badge } from "@/components/ui/badge";
 import { Plus, Filter } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import { recentTransactions, expenseCategories } from "@/lib/mock-data";
+import { recentTransactions, expenseCategories, formatINR } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 const categories = ["Food", "Transport", "Rent", "Shopping", "Subscriptions", "Healthcare", "Utilities", "Other"];
-const methods = ["Credit Card", "Debit Card", "Cash", "Auto-pay", "Bank Transfer"];
+const methods = ["UPI", "Credit Card", "Debit Card", "Cash", "Auto-pay", "Bank Transfer"];
 
 export default function Expenses() {
   const [categoryFilter, setCategoryFilter] = useState("all");
@@ -29,14 +29,12 @@ export default function Expenses() {
         </div>
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="gradient-primary text-primary-foreground gap-1.5">
-              <Plus className="h-4 w-4" /> Add Expense
-            </Button>
+            <Button className="gradient-primary text-primary-foreground gap-1.5"><Plus className="h-4 w-4" /> Add Expense</Button>
           </DialogTrigger>
           <DialogContent className="glass">
             <DialogHeader><DialogTitle>Add Expense</DialogTitle></DialogHeader>
             <div className="space-y-4 pt-2">
-              <div><Label>Amount</Label><Input type="number" placeholder="0.00" className="bg-secondary/50" /></div>
+              <div><Label>Amount (₹)</Label><Input type="number" placeholder="0" className="bg-secondary/50" /></div>
               <div><Label>Category</Label>
                 <Select><SelectTrigger className="bg-secondary/50"><SelectValue placeholder="Select category" /></SelectTrigger>
                   <SelectContent>{categories.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
@@ -100,7 +98,7 @@ export default function Expenses() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Badge variant="outline" className="text-xs">{tx.category}</Badge>
-                  <span className="text-sm font-semibold font-mono">${Math.abs(tx.amount).toFixed(2)}</span>
+                  <span className="text-sm font-semibold font-mono">{formatINR(Math.abs(tx.amount))}</span>
                 </div>
               </motion.div>
             ))}

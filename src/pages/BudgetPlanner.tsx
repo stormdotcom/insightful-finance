@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { budgets } from "@/lib/mock-data";
+import { budgets, formatINR } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { AlertTriangle, CheckCircle } from "lucide-react";
@@ -15,7 +15,7 @@ export default function BudgetPlanner() {
       <div>
         <h1 className="text-2xl font-bold tracking-tight">Budget Planner</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Spent <span className="text-foreground font-semibold">${totalSpent.toLocaleString()}</span> of ${totalLimit.toLocaleString()} budget
+          Spent <span className="text-foreground font-semibold">{formatINR(totalSpent)}</span> of {formatINR(totalLimit)} budget
         </p>
       </div>
 
@@ -46,14 +46,14 @@ export default function BudgetPlanner() {
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1.5">
-                      <span className="text-muted-foreground">${budget.spent} spent</span>
-                      <span className="font-mono text-muted-foreground">${budget.limit} limit</span>
+                      <span className="text-muted-foreground">{formatINR(budget.spent)} spent</span>
+                      <span className="font-mono text-muted-foreground">{formatINR(budget.limit)} limit</span>
                     </div>
                     <Progress value={Math.min(pct, 100)} className={cn("h-2", over && "[&>div]:bg-destructive")} />
                     <p className="text-xs text-muted-foreground mt-1">
                       {over
-                        ? `$${(budget.spent - budget.limit).toLocaleString()} over limit`
-                        : `$${(budget.limit - budget.spent).toLocaleString()} remaining`}
+                        ? `${formatINR(budget.spent - budget.limit)} over limit`
+                        : `${formatINR(budget.limit - budget.spent)} remaining`}
                     </p>
                   </div>
                 </CardContent>
