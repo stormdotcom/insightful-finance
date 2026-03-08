@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
-import { incomeSourcesData, monthlyIncomeHistory } from "@/lib/mock-data";
+import { incomeSourcesData, monthlyIncomeHistory, formatINR } from "@/lib/mock-data";
 
 const sources = ["Salary", "Freelance", "Business", "Passive income", "Other"];
 
@@ -25,7 +25,7 @@ export default function Income() {
           <DialogContent className="glass">
             <DialogHeader><DialogTitle>Add Income</DialogTitle></DialogHeader>
             <div className="space-y-4 pt-2">
-              <div><Label>Amount</Label><Input type="number" placeholder="0.00" className="bg-secondary/50" /></div>
+              <div><Label>Amount (₹)</Label><Input type="number" placeholder="0" className="bg-secondary/50" /></div>
               <div><Label>Source</Label>
                 <Select><SelectTrigger className="bg-secondary/50"><SelectValue placeholder="Select source" /></SelectTrigger>
                   <SelectContent>{sources.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}</SelectContent>
@@ -54,7 +54,7 @@ export default function Income() {
             <div className="flex flex-wrap gap-3 mt-2">
               {incomeSourcesData.map(s => (
                 <div key={s.name} className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                  <div className="h-2 w-2 rounded-full" style={{ background: s.color }} />{s.name}: ${s.value.toLocaleString()}
+                  <div className="h-2 w-2 rounded-full" style={{ background: s.color }} />{s.name}: {formatINR(s.value)}
                 </div>
               ))}
             </div>

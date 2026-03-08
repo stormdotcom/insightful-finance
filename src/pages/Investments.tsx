@@ -1,18 +1,18 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PieChart, Pie, Cell, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { investments, portfolioAllocation } from "@/lib/mock-data";
+import { investments, portfolioAllocation, formatINR } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { TrendingUp, TrendingDown } from "lucide-react";
 
 const growthData = [
-  { month: "Jan", value: 42000 },
-  { month: "Feb", value: 43500 },
-  { month: "Mar", value: 44200 },
-  { month: "Apr", value: 46000 },
-  { month: "May", value: 48500 },
-  { month: "Jun", value: 50700 },
+  { month: "Jan", value: 1800000 },
+  { month: "Feb", value: 1870000 },
+  { month: "Mar", value: 1920000 },
+  { month: "Apr", value: 2000000 },
+  { month: "May", value: 2100000 },
+  { month: "Jun", value: 2195000 },
 ];
 
 export default function Investments() {
@@ -25,9 +25,9 @@ export default function Investments() {
       <div>
         <h1 className="text-2xl font-bold tracking-tight">Investments</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Portfolio: <span className="text-foreground font-semibold">${totalCurrent.toLocaleString()}</span>
+          Portfolio: <span className="text-foreground font-semibold">{formatINR(totalCurrent)}</span>
           {" "}— P/L: <span className={cn("font-semibold", totalPL >= 0 ? "text-primary" : "text-destructive")}>
-            {totalPL >= 0 ? "+" : ""}${totalPL.toLocaleString()}
+            {totalPL >= 0 ? "+" : ""}{formatINR(totalPL)}
           </span>
         </p>
       </div>
@@ -47,11 +47,10 @@ export default function Investments() {
                     </div>
                     {positive ? <TrendingUp className="h-4 w-4 text-primary" /> : <TrendingDown className="h-4 w-4 text-destructive" />}
                   </div>
-                  <p className="text-xl font-bold font-mono">${inv.current.toLocaleString()}</p>
+                  <p className="text-xl font-bold font-mono">{formatINR(inv.current)}</p>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground">Invested: ${inv.invested.toLocaleString()}</span>
-                    <Badge variant="outline" className={cn(
-                      "text-xs",
+                    <span className="text-muted-foreground">Invested: {formatINR(inv.invested)}</span>
+                    <Badge variant="outline" className={cn("text-xs",
                       positive ? "border-primary/50 text-primary" : "border-destructive/50 text-destructive"
                     )}>{positive ? "+" : ""}{inv.change}%</Badge>
                   </div>

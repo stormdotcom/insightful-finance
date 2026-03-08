@@ -7,17 +7,17 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Plus } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { debts } from "@/lib/mock-data";
+import { debts, formatINR } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 const debtProjection = [
-  { month: "Mar", remaining: 277600 },
-  { month: "Jun", remaining: 270900 },
-  { month: "Sep", remaining: 264100 },
-  { month: "Dec", remaining: 257000 },
-  { month: "Mar '27", remaining: 249800 },
-  { month: "Jun '27", remaining: 242500 },
+  { month: "Mar", remaining: 5485000 },
+  { month: "Jun", remaining: 5240000 },
+  { month: "Sep", remaining: 4990000 },
+  { month: "Dec", remaining: 4735000 },
+  { month: "Mar '27", remaining: 4475000 },
+  { month: "Jun '27", remaining: 4210000 },
 ];
 
 export default function DebtManager() {
@@ -31,7 +31,7 @@ export default function DebtManager() {
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Debt Manager</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Total debt: <span className="text-foreground font-semibold">${totalDebt.toLocaleString()}</span> — {paidOff}% paid off
+            Total debt: <span className="text-foreground font-semibold">{formatINR(totalDebt)}</span> — {paidOff}% paid off
           </p>
         </div>
         <Dialog>
@@ -41,13 +41,13 @@ export default function DebtManager() {
           <DialogContent className="glass">
             <DialogHeader><DialogTitle>Add Debt</DialogTitle></DialogHeader>
             <div className="space-y-4 pt-2">
-              <div><Label>Creditor Name</Label><Input placeholder="e.g. Chase Bank" className="bg-secondary/50" /></div>
+              <div><Label>Creditor Name</Label><Input placeholder="e.g. HDFC Bank" className="bg-secondary/50" /></div>
               <div className="grid grid-cols-2 gap-3">
-                <div><Label>Total Amount</Label><Input type="number" placeholder="0.00" className="bg-secondary/50" /></div>
+                <div><Label>Total Amount (₹)</Label><Input type="number" placeholder="0" className="bg-secondary/50" /></div>
                 <div><Label>Interest Rate (%)</Label><Input type="number" placeholder="0.0" className="bg-secondary/50" /></div>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                <div><Label>Monthly Payment</Label><Input type="number" placeholder="0.00" className="bg-secondary/50" /></div>
+                <div><Label>Monthly Payment (₹)</Label><Input type="number" placeholder="0" className="bg-secondary/50" /></div>
                 <div><Label>Due Date</Label><Input type="date" className="bg-secondary/50" /></div>
               </div>
               <Button className="w-full gradient-primary text-primary-foreground">Save Debt</Button>
@@ -75,10 +75,10 @@ export default function DebtManager() {
                   <div>
                     <div className="flex justify-between text-sm mb-1.5">
                       <span className="text-muted-foreground">Remaining</span>
-                      <span className="font-mono font-semibold">${debt.remaining.toLocaleString()} / ${debt.total.toLocaleString()}</span>
+                      <span className="font-mono font-semibold">{formatINR(debt.remaining)} / {formatINR(debt.total)}</span>
                     </div>
                     <Progress value={progress} className="h-2" />
-                    <p className="text-xs text-muted-foreground mt-1">{progress.toFixed(0)}% paid • ${debt.monthly}/mo</p>
+                    <p className="text-xs text-muted-foreground mt-1">{progress.toFixed(0)}% paid • {formatINR(debt.monthly)}/mo</p>
                   </div>
                 </CardContent>
               </Card>
