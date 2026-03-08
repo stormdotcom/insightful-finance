@@ -88,8 +88,8 @@ export function AppSidebar() {
       <SidebarFooter className="p-4">
         {(!collapsed || isMobile) && (
           <div className="glass rounded-lg p-3 text-xs text-muted-foreground">
-            <p className="font-medium text-foreground">Pro Plan</p>
-            <p className="mt-1">AI-powered insights active</p>
+            <p className="font-medium text-foreground">My Finances</p>
+            <p className="mt-1">Last synced: Today, 10:30 AM</p>
           </div>
         )}
       </SidebarFooter>

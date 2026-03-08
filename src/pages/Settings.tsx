@@ -3,14 +3,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Separator } from "@/components/ui/separator";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function SettingsPage() {
   return (
     <div className="space-y-6 max-w-3xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold tracking-tight">Settings</h1>
-        <p className="text-sm text-muted-foreground mt-1">Manage your account and preferences.</p>
+        <p className="text-sm text-muted-foreground mt-1">Manage your preferences.</p>
       </div>
 
       <Card className="glass border-border/50">
@@ -26,14 +26,40 @@ export default function SettingsPage() {
       </Card>
 
       <Card className="glass border-border/50">
+        <CardHeader><CardTitle className="text-base">Preferences</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <Label>Currency</Label>
+            <Select defaultValue="INR">
+              <SelectTrigger className="bg-secondary/50"><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="INR">₹ Indian Rupee (INR)</SelectItem>
+                <SelectItem value="USD">$ US Dollar (USD)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <Label>Monthly Budget Reset Day</Label>
+            <Select defaultValue="1">
+              <SelectTrigger className="bg-secondary/50"><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1">1st of month</SelectItem>
+                <SelectItem value="15">15th of month</SelectItem>
+                <SelectItem value="salary">Salary day</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="glass border-border/50">
         <CardHeader><CardTitle className="text-base">Notifications</CardTitle></CardHeader>
         <CardContent className="space-y-4">
           {[
             ["Unusual spending alerts", true],
             ["Budget exceeded warnings", true],
-            ["Debt payment reminders", true],
-            ["Investment opportunities", false],
-            ["AI-generated summaries", true],
+            ["EMI payment reminders", true],
+            ["Weekly spending summary", false],
           ].map(([label, defaultVal]) => (
             <div key={label as string} className="flex items-center justify-between">
               <Label>{label as string}</Label>
