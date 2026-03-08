@@ -35,10 +35,10 @@ export function StatCard({ title, value, change, changeType = "neutral", icon: I
           )}
         </div>
         <div className={cn(
-          "h-10 w-10 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110",
+          "h-8 w-8 sm:h-10 sm:w-10 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110 shrink-0",
           iconClassName || "bg-primary/10 text-primary"
         )}>
-          <Icon className="h-5 w-5" />
+          <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
         </div>
       </div>
     </motion.div>
