@@ -78,7 +78,7 @@ export default function AIAdvisor() {
         </div>
 
         {/* Chat Interface */}
-        <Card className="glass border-border/50 lg:col-span-2 flex flex-col" style={{ minHeight: 500 }}>
+        <Card className="glass border-border/50 lg:col-span-2 flex flex-col min-h-[400px]" style={{ maxHeight: "calc(100vh - 200px)" }}>
           <CardHeader className="pb-2 border-b border-border/50">
             <CardTitle className="text-base flex items-center gap-2">
               <Bot className="h-4 w-4 text-primary" />Chat with AI Advisor
