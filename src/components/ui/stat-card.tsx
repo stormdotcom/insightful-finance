@@ -17,12 +17,12 @@ export function StatCard({ title, value, change, changeType = "neutral", icon: I
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="glass rounded-xl p-5 hover:border-primary/20 transition-all duration-300 group"
+      className="glass rounded-xl p-3 sm:p-5 hover:border-primary/20 transition-all duration-300 group"
     >
-      <div className="flex items-start justify-between">
-        <div className="space-y-1">
-          <p className="text-sm text-muted-foreground">{title}</p>
-          <p className="text-2xl font-bold tracking-tight">{value}</p>
+      <div className="flex items-start justify-between gap-2">
+        <div className="space-y-0.5 sm:space-y-1 min-w-0">
+          <p className="text-xs sm:text-sm text-muted-foreground truncate">{title}</p>
+          <p className="text-lg sm:text-2xl font-bold tracking-tight">{value}</p>
           {change && (
             <p className={cn(
               "text-xs font-medium",
@@ -35,10 +35,10 @@ export function StatCard({ title, value, change, changeType = "neutral", icon: I
           )}
         </div>
         <div className={cn(
-          "h-10 w-10 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110",
+          "h-8 w-8 sm:h-10 sm:w-10 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110 shrink-0",
           iconClassName || "bg-primary/10 text-primary"
         )}>
-          <Icon className="h-5 w-5" />
+          <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
         </div>
       </div>
     </motion.div>

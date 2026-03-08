@@ -23,6 +23,7 @@ import {
   SidebarFooter,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const navItems = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
@@ -37,18 +38,23 @@ const navItems = [
 ];
 
 export function AppSidebar() {
-  const { state } = useSidebar();
+  const { state, setOpenMobile } = useSidebar();
   const collapsed = state === "collapsed";
   const location = useLocation();
+  const isMobile = useIsMobile();
+
+  const handleNavClick = () => {
+    if (isMobile) setOpenMobile(false);
+  };
 
   return (
-    <Sidebar collapsible="icon" className="border-r border-border/50">
+    <Sidebar collapsible={isMobile ? "offcanvas" : "icon"} className="border-r border-border/50">
       <SidebarHeader className="p-4">
         <div className="flex items-center gap-3">
           <div className="h-8 w-8 rounded-lg gradient-primary flex items-center justify-center shrink-0">
             <Wallet className="h-4 w-4 text-primary-foreground" />
           </div>
-          {!collapsed && (
+          {(!collapsed || isMobile) && (
             <span className="text-lg font-bold tracking-tight gradient-text">
               FinanceAI
             </span>
@@ -67,9 +73,10 @@ export function AppSidebar() {
                       end={item.url === "/"}
                       className="flex items-center gap-3 px-3 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200"
                       activeClassName="bg-primary/10 text-primary font-medium"
+                      onClick={handleNavClick}
                     >
                       <item.icon className="h-4 w-4 shrink-0" />
-                      {!collapsed && <span>{item.title}</span>}
+                      {(!collapsed || isMobile) && <span>{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -79,7 +86,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="p-4">
-        {!collapsed && (
+        {(!collapsed || isMobile) && (
           <div className="glass rounded-lg p-3 text-xs text-muted-foreground">
             <p className="font-medium text-foreground">Pro Plan</p>
             <p className="mt-1">AI-powered insights active</p>

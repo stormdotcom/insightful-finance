@@ -39,7 +39,7 @@ export default function Dashboard() {
       </div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
         <StatCard title="Total Balance" value="$24,580" change="+12.5% from last month" changeType="positive" icon={Wallet} />
         <StatCard title="Monthly Income" value="$7,650" change="+8.2%" changeType="positive" icon={TrendingUp} iconClassName="bg-accent/10 text-accent" />
         <StatCard title="Monthly Expenses" value="$3,600" change="-4.1%" changeType="positive" icon={TrendingDown} iconClassName="bg-warning/10 text-warning" />
