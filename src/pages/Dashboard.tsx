@@ -33,8 +33,8 @@ export default function Dashboard() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Financial Overview</h1>
-        <p className="text-sm text-muted-foreground mt-1">Welcome back — here's your financial snapshot.</p>
+        <h1 className="text-2xl font-bold tracking-tight">Hi, Alex 👋</h1>
+        <p className="text-sm text-muted-foreground mt-1">Here's your financial snapshot for March 2026.</p>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
