@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0d1f2d"/>
+      <stop offset="100%" stop-color="#0a1628"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="180" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background (iOS clips to rounded corners automatically) -->
+  <rect width="180" height="180" fill="url(#bg)"/>
+
+  <!-- Subtle grid -->
+  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="10" cy="10" r="0.8" fill="white" opacity="0.05"/>
+  </pattern>
+  <rect width="180" height="180" fill="url(#grid)"/>
+
+  <!-- Bars -->
+  <rect x="28"  y="116" width="20" height="30" rx="5" fill="#10b981" opacity="0.35"/>
+  <rect x="56"  y="98"  width="20" height="48" rx="5" fill="#10b981" opacity="0.5"/>
+  <rect x="84"  y="106" width="20" height="40" rx="5" fill="#10b981" opacity="0.45"/>
+  <rect x="112" y="78"  width="20" height="68" rx="5" fill="#10b981" opacity="0.65"/>
+  <rect x="140" y="52"  width="20" height="94" rx="5" fill="url(#line)"/>
+
+  <!-- Trend line -->
+  <polyline
+    points="38,115 66,97 94,105 122,77 150,51"
+    stroke="url(#line)"
+    stroke-width="4"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Peak dot -->
+  <circle cx="150" cy="51" r="8"  fill="#10b981" opacity="0.3"/>
+  <circle cx="150" cy="51" r="5"  fill="#10b981"/>
+  <circle cx="150" cy="51" r="2.5" fill="white" opacity="0.95"/>
+
+  <!-- Rupee symbol -->
+  <text x="24" y="64" font-family="system-ui,sans-serif" font-size="38" font-weight="800" fill="#10b981" opacity="0.9">₹</text>
+</svg>

@@ -53,9 +53,11 @@ export function AppSidebar() {
     <Sidebar collapsible={isMobile ? "offcanvas" : "icon"} className="border-r border-border/50">
       <SidebarHeader className="p-4">
         <div className="flex items-center gap-3">
-          <div className="h-8 w-8 rounded-lg gradient-primary flex items-center justify-center shrink-0">
-            <Wallet className="h-4 w-4 text-primary-foreground" />
-          </div>
+          <img
+            src="/favicon.svg"
+            alt="FinanceAI logo"
+            className="h-8 w-8 rounded-lg shrink-0"
+          />
           {(!collapsed || isMobile) && (
             <span className="text-lg font-bold tracking-tight gradient-text">
               FinanceAI

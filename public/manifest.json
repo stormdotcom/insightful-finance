@@ -1,0 +1,34 @@
+{
+  "name": "FinanceAI — Personal Finance Intelligence",
+  "short_name": "FinanceAI",
+  "description": "AI-powered personal finance management. Track expenses, investments, debt and budgets with an intelligent AI advisor and crisis planning whiteboard.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080e1a",
+  "theme_color": "#10b981",
+  "orientation": "any",
+  "categories": ["finance", "productivity"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "apple touch icon"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.svg",
+      "sizes": "1200x630",
+      "type": "image/svg+xml",
+      "label": "FinanceAI Dashboard"
+    }
+  ]
+}
