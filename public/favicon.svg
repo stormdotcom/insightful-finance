@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0d1f2d"/>
+      <stop offset="100%" stop-color="#0a1628"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="32" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="dot" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="6" y1="22" x2="26" y2="22" stroke="#ffffff" stroke-opacity="0.06" stroke-width="0.5"/>
+  <line x1="6" y1="17" x2="26" y2="17" stroke="#ffffff" stroke-opacity="0.06" stroke-width="0.5"/>
+  <line x1="6" y1="12" x2="26" y2="12" stroke="#ffffff" stroke-opacity="0.06" stroke-width="0.5"/>
+
+  <!-- Bar chart bars -->
+  <rect x="6"  y="18" width="3.5" height="4" rx="1" fill="#10b981" opacity="0.5"/>
+  <rect x="11" y="14" width="3.5" height="8" rx="1" fill="#10b981" opacity="0.7"/>
+  <rect x="16" y="16" width="3.5" height="6" rx="1" fill="#10b981" opacity="0.6"/>
+  <rect x="21" y="10" width="3.5" height="12" rx="1" fill="url(#line)"/>
+
+  <!-- Trend line over bars -->
+  <polyline
+    points="7.75,17 12.75,13 17.75,15 22.75,9"
+    stroke="url(#line)"
+    stroke-width="1.5"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Dot at peak -->
+  <circle cx="22.75" cy="9" r="1.8" fill="url(#dot)"/>
+  <circle cx="22.75" cy="9" r="1" fill="white" opacity="0.9"/>
+
+  <!-- Rupee symbol bottom-left (small) -->
+  <text x="5.5" y="9" font-family="system-ui, sans-serif" font-size="6" font-weight="700" fill="#10b981" opacity="0.85">₹</text>
+</svg>

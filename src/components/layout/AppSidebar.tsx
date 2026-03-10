@@ -8,6 +8,7 @@ import {
   Bot,
   BarChart3,
   Settings,
+  ShieldAlert,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
@@ -33,6 +34,7 @@ const navItems = [
   { title: "Investments", url: "/investments", icon: TrendingUp },
   { title: "Budget Planner", url: "/budget", icon: PiggyBank },
   { title: "AI Advisor", url: "/ai-advisor", icon: Bot },
+  { title: "Crisis Planner", url: "/crisis", icon: ShieldAlert },
   { title: "Reports", url: "/reports", icon: BarChart3 },
   { title: "Settings", url: "/settings", icon: Settings },
 ];

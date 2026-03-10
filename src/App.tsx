@@ -13,6 +13,7 @@ import BudgetPlanner from "./pages/BudgetPlanner";
 import AIAdvisor from "./pages/AIAdvisor";
 import Reports from "./pages/Reports";
 import SettingsPage from "./pages/Settings";
+import CrisisPlanning from "./pages/CrisisPlanning";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/ai-advisor" element={<AIAdvisor />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/crisis" element={<CrisisPlanning />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </DashboardLayout>
